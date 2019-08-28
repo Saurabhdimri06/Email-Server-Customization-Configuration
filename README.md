@@ -1,2 +1,2 @@
-# Minor1
-This repository contains the Minor Project that is E-Mail server configuratuion and customization.
+# Email Server Customization/Configuration
+This repository contains a basic project that is E-Mail server configuration and customization.
