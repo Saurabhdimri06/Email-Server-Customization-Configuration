@@ -1,4 +1,5 @@
 #include<stdio.h>
+int tot;
 //To read the Contents of Dictionary File
 void readDict()
 {
@@ -46,6 +47,23 @@ int indexOf(FILE *fptr, const char *word, int *line, int *col)
         *line = -1;
 
     return *col;
+}
+//To Store the Words in the Dictionary in 2D array
+int WordArr(char l[][128])
+{
+    FILE *fptr1 ; 
+    int i = 0;
+    printf("\n\n Read the file and store the lines into an array :\n");
+	printf("------------------------------------------------------\n"); 	
+
+    fptr1 = fopen("A:/Minor1/TestDictionary.txt", "r"); //open file
+    while(fgets(l[i], LSIZ, fptr1)) 
+	{
+        l[i][strlen(l[i]) - 1] = '\0';  //stroing word in 2D array
+        i++;
+    }
+    tot = i;
+    return 0;
 }
 int main()
 {
