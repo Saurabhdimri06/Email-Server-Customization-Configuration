@@ -6,7 +6,6 @@
 #define LSIZ 128 
 #define RSIZ 20 
 int tot;
->>>>>>> filtering
 //To read the Contents of Dictionary File
 void readDict()
 {
@@ -104,5 +103,4 @@ int main()
     	fclose(fptr);
 	}
     return 0;
->>>>>>> filtering
 }
