@@ -1,4 +1,10 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define BUFFER_SIZE 1000
+#define LSIZ 128 
+#define RSIZ 20 
 int tot;
 //To read the Contents of Dictionary File
 void readDict()
@@ -67,14 +73,34 @@ int WordArr(char l[][128])
 }
 int main()
 {
-	//Printing Contents of TestDictionary.txt
-	readDict();
-	//Add Filtering module
-	
-	//Add File handling for filter and dictionary
-
-	//Searching the contents form the file
-	
-	
-	return 0;
+	//Printing Contents of TestDictionary.txt   
+    readDict();
+    int i;
+	char l[RSIZ][LSIZ];
+    FILE *fptr;
+    int line, col;
+    int flag = 0;
+    //Stroing Words into an array
+    WordArr(l);
+    for(i = 0; i < tot; ++i)
+    {
+    	fptr = fopen("A:/Minor1/TestMailFile.txt", "r");
+    	printf("\n%s\n",l[i]);
+    	//Checking file against words stored in array
+    	indexOf(fptr, l[i], &line, &col);
+		//Flagging mail if word is found in file
+    	if (line != -1)
+		{
+	    	flag = 1;
+	    	printf("========================================================\n");
+	    	printf("This mail is Flagged\n");
+	    	printf("'%s' found at line: %d, col: %d\n", l[i], line + 1, col + 1);
+			//break;		
+		}
+    	else
+        	printf("'%s' does not exists.\n", l[i]);
+    	// Close file
+    	fclose(fptr);
+	}
+    return 0;
 }
