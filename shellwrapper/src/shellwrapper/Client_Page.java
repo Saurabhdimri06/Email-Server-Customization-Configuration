@@ -7,6 +7,12 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//File handling imports
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 //Swing imports
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -57,6 +63,7 @@ public class Client_Page extends Thread
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
 	    		String filename = "mailer.txt";
+			append(filename, "TO: "+t1.getText());
 	    		to = t1.getText();
 	    		System.out.println("To: "+ t1.getText());
 	    	}
@@ -71,6 +78,7 @@ public class Client_Page extends Thread
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
 	    		String filename = "mailer.txt";
+	    		append(filename, "\nFrom: "+t2.getText());
 	    		System.out.println("From: "+ t2.getText());
 	    	}
 	    });
@@ -83,6 +91,7 @@ public class Client_Page extends Thread
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
 	    		String filename = "mailer.txt";
+	    		append(filename, "\nSubject: "+t3.getText());
 	    		System.out.println("Subject: "+ t3.getText());
 	    	}
 	    });
@@ -95,6 +104,7 @@ public class Client_Page extends Thread
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
 	    		String filename = "mailer.txt";
+			append(filename, "\nMessage: "+t4.getText());
 	    		System.out.println("Message: "+ t4.getText());
 	    	}
 	    });
@@ -127,6 +137,25 @@ public class Client_Page extends Thread
 		f.add(b1);
 	}
 	
+	//To do file handling of the content
+	private static void append(String filePath, String text) {
+		File file = new File(filePath);
+		FileWriter fr = null;
+		try {
+			// Below constructor argument decides whether to append or override
+			fr = new FileWriter(file, true);
+			fr.write(text);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				fr.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	
 	public static void main(String[] args) 
@@ -134,7 +163,16 @@ public class Client_Page extends Thread
 		//RunningSS obj = new RunningSS();			//To generate instance of package
 		//obj.console();								//To call the script defined in the package
 		Client_Page caller = new Client_Page();
-		  
+		//To store the text to new file -> mailer.txt
+		String fileName = "mailer.txt"; 
+        	try { 
+            		BufferedWriter out = new BufferedWriter( new FileWriter(fileName)); 
+            		out.close(); 
+        	}	 
+        	catch (IOException e) { 
+            		System.out.println("Exception Occurred" + e); 
+        	} 
+
         System.out.println("DONE");
 	}
 }
