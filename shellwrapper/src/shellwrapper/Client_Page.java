@@ -23,11 +23,11 @@ import javax.swing.JPanel;
 
 public class Client_Page extends Thread 
 {
-	
+	String filename = "D:/mailer.txt";
 	private JFrame f = new JFrame("Mailer Page");
 	JPanel p1;
 	JButton b1;
-	String to;
+	static String to,from,subject,message;
 	
 	Client_Page() 
 	{		 
@@ -57,14 +57,14 @@ public class Client_Page extends Thread
 		//TO TEXT FIELD
 		t1=new TextField(""); 
 	    t1.setBounds(80,20, 200,30);
+	    
 	    //To get the entered String
 	    t1.addActionListener(new ActionListener() 
 	    {
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
-	    		String filename = "mailer.txt";
-			append(filename, "TO: "+t1.getText());
 	    		to = t1.getText();
+	    		append(filename, "TO: "+t1.getText());	    	
 	    		System.out.println("To: "+ t1.getText());
 	    	}
 	    });
@@ -72,12 +72,13 @@ public class Client_Page extends Thread
 	    //FROM TEXT FIELD
 	    t2=new TextField("");
 	    t2.setBounds(80,70, 200,30);
+	    
 	    //Action listener for field 2
 	    t2.addActionListener(new ActionListener() 
 	    {
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
-	    		String filename = "mailer.txt";
+	    		from = t2.getText();
 	    		append(filename, "\nFrom: "+t2.getText());
 	    		System.out.println("From: "+ t2.getText());
 	    	}
@@ -85,12 +86,13 @@ public class Client_Page extends Thread
 	    
 	    t3=new TextField("");  
 	    t3.setBounds(80,120, 400,30);
+	    
 	    //Action Listener created
 	    t3.addActionListener(new ActionListener() 
 	    {
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
-	    		String filename = "mailer.txt";
+	    		subject = t3.getText();
 	    		append(filename, "\nSubject: "+t3.getText());
 	    		System.out.println("Subject: "+ t3.getText());
 	    	}
@@ -98,13 +100,14 @@ public class Client_Page extends Thread
 	
 	    t4 = new TextField("");
 	    t4.setBounds(80,170, 650, 350);
+	    
 	    //Action Listener created
 	    t4.addActionListener(new ActionListener() 
 	    {
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
-	    		String filename = "mailer.txt";
-			append(filename, "\nMessage: "+t4.getText());
+	    		message = t4.getText();
+	    		append(filename, "\nMessage: "+t4.getText());
 	    		System.out.println("Message: "+ t4.getText());
 	    	}
 	    });
@@ -158,21 +161,21 @@ public class Client_Page extends Thread
 	}
 
 	
-	public static void main(String[] args) 
+	public static void main(String[] args) throws InterruptedException 
 	{
-		//RunningSS obj = new RunningSS();			//To generate instance of package
-		//obj.console();								//To call the script defined in the package
 		Client_Page caller = new Client_Page();
+		sleep(100000);
 		//To store the text to new file -> mailer.txt
-		String fileName = "mailer.txt"; 
+		String fileName = "D:/mailer.txt"; 
         	try { 
             		BufferedWriter out = new BufferedWriter( new FileWriter(fileName)); 
             		out.close(); 
         	}	 
         	catch (IOException e) { 
             		System.out.println("Exception Occurred" + e); 
-        	} 
-
+        	}
+    		RunningSS obj = new RunningSS();			//To generate instance of package
+    		obj.console(to,from,subject,message);		//To call the script defined in the package
         System.out.println("DONE");
 	}
 }
