@@ -1,16 +1,17 @@
 package shellwrapper;
-
+import shellwrapper.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class RunningSS {
 
-    public static void console() {
-
-        ProcessBuilder processBuilder = new ProcessBuilder();
+    public static void console(String t1, String t2, String t3, String t4) {
+    	ProcessBuilder processBuilder = new ProcessBuilder();
         // Windows
-        String s = "echo this is some command";
+    	
+        String s = t1+t2+t3+t4;
+        System.out.println(s);
         processBuilder.command("cmd.exe", "/c", s);
         
         try {
