@@ -12,7 +12,6 @@ void readDict()
      /*Reading the contents of TestDictionary.txt*/
      FILE *fp;
      char ch;
-     
      /*Open file in read mode*/
      fp= fopen ("A:/Minor1/TestDictionary.txt", "r");
      while( (ch = getc(fp)) != EOF) 
