@@ -7,6 +7,7 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 //File handling imports
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,7 +22,7 @@ import javax.swing.JPanel;
 
 
 
-public class Client_Page extends Thread 
+public class Client_Page extends Thread
 {
 	String filename = "D:/mailer.txt";
 	private JFrame f = new JFrame("Mailer Page");
@@ -39,7 +40,7 @@ public class Client_Page extends Thread
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(800,800);
 		f.setVisible(true);
-		
+
 		//Labels for the text fields
 		JLabel l1,l2,l3,l4;  
 		l1=new JLabel("TO:");  
@@ -120,7 +121,27 @@ public class Client_Page extends Thread
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				call();
 				f.dispose();
+			}
+
+			private void call() {
+				// TODO Auto-generated method stub
+				System.out.println("Called after clicking send");
+				
+				//To store the text to new file -> mailer.txt
+				String fileName = "D:/mailer.txt"; 
+		    	try { 
+		        		BufferedWriter out = new BufferedWriter( new FileWriter(fileName)); 
+		        		out.close(); 
+		    	}	 
+		    	catch (IOException e) { 
+		        		System.out.println("Exception Occurred" + e); 
+		    	}
+				RunningSS obj = new RunningSS();			//To generate instance of package
+				obj.console(to,from,subject,message);		//To call the script defined in the package
+				System.out.println("DONE");
+
 			}
 		});
 		
@@ -164,18 +185,6 @@ public class Client_Page extends Thread
 	public static void main(String[] args) throws InterruptedException 
 	{
 		Client_Page caller = new Client_Page();
-		sleep(100000);
-		//To store the text to new file -> mailer.txt
-		String fileName = "D:/mailer.txt"; 
-        	try { 
-            		BufferedWriter out = new BufferedWriter( new FileWriter(fileName)); 
-            		out.close(); 
-        	}	 
-        	catch (IOException e) { 
-            		System.out.println("Exception Occurred" + e); 
-        	}
-    		RunningSS obj = new RunningSS();			//To generate instance of package
-    		obj.console(to,from,subject,message);		//To call the script defined in the package
-        System.out.println("DONE");
 	}
+
 }
