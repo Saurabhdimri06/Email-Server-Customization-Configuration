@@ -12,7 +12,7 @@ public class RunningSS {
     	
         String s = t1+t2+t3+t4;
         System.out.println(s);
-        processBuilder.command("cmd.exe", "/c", s);
+        processBuilder.command("bash", "-c", s);
         
         try {
         	//Running the process builder to compile the script
