@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 
 public class Client_Page extends Thread
 {
-	String filename = "D:/mailer.txt";
+	String filename = "/home/always2k/Desktop/Temp/mailer.txt";
 	private JFrame f = new JFrame("Mailer Page");
 	JPanel p1;
 	JButton b1;
@@ -65,7 +65,7 @@ public class Client_Page extends Thread
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
 	    		to = t1.getText();
-	    		append(filename, "TO: "+t1.getText());	    	
+	    		append(filename, t1.getText());	    	
 	    		System.out.println("To: "+ t1.getText());
 	    	}
 	    });
@@ -177,7 +177,7 @@ public class Client_Page extends Thread
 	{
 		Client_Page caller = new Client_Page();
 		//To store the text to new file -> mailer.txt
-		String fileName = "D:/mailer.txt"; 
+		String fileName = "/home/always2k/Desktop/Temp/mailer.txt"; 
     	try { 
         		BufferedWriter out = new BufferedWriter( new FileWriter(fileName)); 
         		out.close(); 
