@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class RunningSS {
 
-    public static void console(String t1, String t2, String t3, String t4) {
+    public void console(String t1, String t2, String t3, String t4) {
     	ProcessBuilder processBuilder = new ProcessBuilder();
         // Windows
     	
