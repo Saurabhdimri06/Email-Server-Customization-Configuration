@@ -129,15 +129,6 @@ public class Client_Page extends Thread
 				// TODO Auto-generated method stub
 				System.out.println("Called after clicking send");
 				
-				//To store the text to new file -> mailer.txt
-				String fileName = "D:/mailer.txt"; 
-		    	try { 
-		        		BufferedWriter out = new BufferedWriter( new FileWriter(fileName)); 
-		        		out.close(); 
-		    	}	 
-		    	catch (IOException e) { 
-		        		System.out.println("Exception Occurred" + e); 
-		    	}
 				RunningSS obj = new RunningSS();			//To generate instance of package
 				obj.console(to,from,subject,message);		//To call the script defined in the package
 				System.out.println("DONE");
@@ -185,6 +176,15 @@ public class Client_Page extends Thread
 	public static void main(String[] args) throws InterruptedException 
 	{
 		Client_Page caller = new Client_Page();
+		//To store the text to new file -> mailer.txt
+		String fileName = "D:/mailer.txt"; 
+    	try { 
+        		BufferedWriter out = new BufferedWriter( new FileWriter(fileName)); 
+        		out.close(); 
+    	}	 
+    	catch (IOException e) { 
+        		System.out.println("Exception Occurred" + e); 
+    	}
 	}
 
 }
