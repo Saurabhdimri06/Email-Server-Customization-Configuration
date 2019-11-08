@@ -10,7 +10,7 @@ public class RunningSS {
     	ProcessBuilder processBuilder = new ProcessBuilder();
         // Windows
     	
-        String s = t1+t2+t3+t4;
+        String s = "echo \""+t4+"\" | mail -s \""+t3+"\" -a \""+t1+"\" "+ t2;
         System.out.println(s);
         processBuilder.command("bash", "-c", s);
         
