@@ -2,12 +2,13 @@ package shellwrapper;
 import shellwrapper.*;
 
 //AWT imports
+import java.awt.*;
 import java.awt.Dimension;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
+import java.awt.Insets;
+ 
 //File handling imports
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 //Swing imports
+import javax.swing.*; 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,9 +45,9 @@ public class Client_Page extends Thread
 
 		//Labels for the text fields
 		JLabel l1,l2,l3,l4;  
-		l1=new JLabel("TO:");  
+		l1=new JLabel("FROM:");  
 		l1.setBounds(10,20,200,30);
-		l2=new JLabel("FROM:");  
+		l2=new JLabel("TO:");  
 		l2.setBounds(10,70,200,30);
 		l3=new JLabel("SUBJECT:");  
 		l3.setBounds(10,120,200,30);
@@ -66,7 +68,7 @@ public class Client_Page extends Thread
 	    	{
 	    		to = t1.getText();
 	    		append(filename, t1.getText());	    	
-	    		System.out.println("To: "+ t1.getText());
+	    		System.out.println("From: "+ t1.getText());
 	    	}
 	    });
 	    
@@ -80,8 +82,8 @@ public class Client_Page extends Thread
 	    	public void actionPerformed(ActionEvent e) 
 	    	{
 	    		from = t2.getText();
-	    		append(filename, "\nFrom: "+t2.getText());
-	    		System.out.println("From: "+ t2.getText());
+	    		append(filename, "\nTo: "+t2.getText());
+	    		System.out.println("TO: "+ t2.getText());
 	    	}
 	    });
 	    
@@ -136,20 +138,79 @@ public class Client_Page extends Thread
 			}
 		});
 		
-		//TextFields and TextAreas
-		f.add(t1); 
-		f.add(t2);
-		f.add(t3);
-		f.add(t4);
-		
-		//Adding labels for textFields and textAreas
-		f.add(l1);
-		f.add(l2);
-		f.add(l3);
-		f.add(l4);
-		
-		//adding Button
-		f.add(b1);
+		GridBagLayout layout = new GridBagLayout();
+
+      f.setLayout(layout);        
+      GridBagConstraints gbc = new GridBagConstraints();
+
+    int top = 20;
+    int left = 20;
+    int bottom = 2;
+    int right = 40;
+    gbc.insets = new Insets(top, left, bottom, right);
+
+//LABEL1 AND TEXTFIELD1
+      gbc.fill = GridBagConstraints.HORIZONTAL;
+      gbc.ipadx = 20; 
+      gbc.ipady = 20;
+      gbc.gridx = 0;
+      gbc.gridy = 0;
+      f.add(l1,gbc);
+
+      gbc.ipadx = 150;
+      gbc.gridx = 1;
+      gbc.gridy = 0;
+      f.add(t1,gbc); 
+
+//LABEL2 AND TEXTFIELD2
+      gbc.fill = GridBagConstraints.HORIZONTAL;
+      gbc.ipadx = 20;
+      gbc.ipady = 20;   
+      gbc.gridx = 0;
+      gbc.gridy = 1;
+      f.add(l2,gbc); 
+
+      gbc.ipadx = 150;
+      gbc.gridx = 1;
+      gbc.gridy = 1;       
+      f.add(t2,gbc);  
+
+//LABEL3 AND TEXTFIELD3
+      gbc.fill = GridBagConstraints.HORIZONTAL;
+      gbc.ipadx = 20;
+      gbc.ipady = 20;   
+      gbc.gridx = 0;
+      gbc.gridy = 2;
+      f.add(l3,gbc); 
+
+      gbc.ipadx = 200;
+      gbc.gridx = 1;
+      gbc.gridy = 2;       
+      f.add(t3,gbc);  
+
+//LABEL4 AND TEXTFIELD4
+      gbc.fill = GridBagConstraints.HORIZONTAL;
+      gbc.ipadx = 20;
+      gbc.ipady = 20;   
+      gbc.gridx = 0;
+      gbc.gridy = 3;
+      f.add(l4,gbc); 
+
+      gbc.ipadx = 200;
+      gbc.gridx = 1;
+      gbc.gridy = 3;     
+      f.add(t4,gbc); 
+
+//BUTTON
+      gbc.ipadx = 300;
+      gbc.gridx = 1;
+      gbc.gridy = 4;      
+      gbc.fill = GridBagConstraints.HORIZONTAL;
+      gbc.gridwidth = 2;   
+      f.add(b1,gbc);
+
+      f.setVisible(true);
+      f.setSize(600,450);
 	}
 	
 	//To do file handling of the content
