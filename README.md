@@ -1,2 +1,2 @@
 # Email-Server-Customization-Configuration
-This repository contains the Minor Project that is E-Mail server configuratuion and customization.
+This branch contains the Documentation for the Project that is E-Mail server configuratuion and customization.
