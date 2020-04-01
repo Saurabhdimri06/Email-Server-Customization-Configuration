@@ -7,7 +7,7 @@ The aim of the project is to setup a simple SMTP server on a Linux OS and Custom
 - Maintenance of Log for admin of all mails and foul mails
 - Buffer of foul mails for admin
 
-## Contributer
+## Contributors
 - @github/Always2KSpiner 
 - @github/Saurabhdimri06 
 - @github/DarshAsawa
