@@ -11,7 +11,7 @@ public class RunningSS {
         // Windows
     	
         String s = "echo \""+t4+"\" | mail -s \""+t3+"\" -a \""+t1+"\" "+ t2;
-        System.out.println(s);
+        //System.out.println(s);
         processBuilder.command("bash", "-c", s);
         
         try {
@@ -28,7 +28,7 @@ public class RunningSS {
             }
 
             int exitCode = process.waitFor();
-            System.out.println("\nExited with error code : " + exitCode);
+            //System.out.println("\nExited with error code : " + exitCode);
 
         } catch (IOException e) {
             e.printStackTrace();

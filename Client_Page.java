@@ -26,7 +26,7 @@ import javax.swing.JPanel;
 
 public class Client_Page extends Thread
 {
-	String filename = "/home/always2k/Desktop/Temp/mailer.txt";
+	String filename = "/home/always2k/Desktop/Scimail/mailer.txt";
 	private JFrame f = new JFrame("Mailer Page");
 	JPanel p1;
 	JButton b1;
@@ -129,11 +129,11 @@ public class Client_Page extends Thread
 
 			private void call() {
 				// TODO Auto-generated method stub
-				System.out.println("Called after clicking send");
+				//System.out.println("Called after clicking send");
 				
 				RunningSS obj = new RunningSS();			//To generate instance of package
 				obj.console(to,from,subject,message);		//To call the script defined in the package
-				System.out.println("DONE");
+				//System.out.println("DONE");
 
 			}
 		});
@@ -238,7 +238,7 @@ public class Client_Page extends Thread
 	{
 		Client_Page caller = new Client_Page();
 		//To store the text to new file -> mailer.txt
-		String fileName = "/home/always2k/Desktop/Temp/mailer.txt"; 
+		String fileName = "/home/always2k/Desktop/Scimail/mailer.txt"; 
     	try { 
         		BufferedWriter out = new BufferedWriter( new FileWriter(fileName)); 
         		out.close(); 
